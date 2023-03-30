@@ -1,0 +1,52 @@
+.add-books {
+    margin-top: 5px;
+}
+
+nav {
+    background-color: rgb(64, 127, 127);
+}
+
+th {
+    text-align: center;
+}
+
+.table-header {
+    background-color: rgb(5, 78, 78);
+    color: azure;
+}
+
+.table-td {
+    background-color: rgb(64, 127, 127);
+}
+
+.card-header {
+    background-color: rgba(232, 219, 191, 0.834);
+    font-family: 'Shadows Into Light', cursive;
+    font-size: 70px;
+    color: rgba(69, 152, 152, 0.693);
+}
+
+.card-body {
+    background-color: beige;
+}
+
+body {
+    background-attachment: fixed;
+    background-image: url('https://i.pinimg.com/736x/2d/94/91/2d94919583ea7e120aad901daa2c3e9e.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-blend-mode: multiply;
+    background-color: rgba(8, 11, 12, 0.451);
+}
+
+#myEditModal {
+    font-family: 'Shadows Into Light', cursive;
+    font-size: 50px;
+    color: rgba(69, 152, 152, 0.573);
+}
+
+.addBookBtn  {
+    font-family: 'Shadows Into Light', cursive;
+    font-size: 50px;
+    color: rgba(69, 152, 152, 0.573);
+}
