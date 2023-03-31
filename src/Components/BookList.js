@@ -62,7 +62,7 @@ const BookList = () => {
                                     <td className='text-center'>{book.genre}</td>
                                     <td>
                                         <div className='addBook'>
-                                            <EditBooks getBooks={getBooks} endpoint={endpoint}/>
+                                            <EditBooks getBooks={getBooks} endpoint={endpoint} book={book}/>
                                             <Grid className='text-center' style={{cursor: 'pointer'}} item xs={8} onClick={() => deleteBook(book.id)}>
                                                 <DeleteForeverOutlinedIcon />
                                             </Grid>

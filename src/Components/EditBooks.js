@@ -3,14 +3,14 @@ import EditOutlinedIcon from '@mui/icons-material/EditOutlined';
 import Grid from '@mui/material/Grid';
 
 
-function EditBooks({ getBooks, endpoint }) {
+function EditBooks({ getBooks, endpoint, book }) {
     const [editTitle, setEditTitle] = useState('');
     const [editAuthor, setEditAuthor] = useState('');
     const [editGenre, setEditGenre] = useState('');
-
-
-    const updateBook = (e, id) => {
-        e.preventDefault();
+    
+    const updateBook = (id) => {
+        //console.log(endpoint);
+        console.log(id);
         fetch(`${endpoint}/${id}`, {
             method: 'PUT',
             headers: {
@@ -22,6 +22,7 @@ function EditBooks({ getBooks, endpoint }) {
                 genre: editGenre
             })
         }).then(() => getBooks())
+        //console.log(getBooks());
 
         setEditTitle('');
         setEditAuthor('');
@@ -47,20 +48,20 @@ function EditBooks({ getBooks, endpoint }) {
                         <form>
                         <div className="mb-3">
                             <label htmlFor="title" className="col-form-label">Title</label>
-                            <input type="text" className="form-control" onChange={(e) => setEditTitle(e.target.value)} id="title"/>
+                            <input type="text" className="form-control" value={editTitle} onChange={(e) => setEditTitle(e.target.value)} id="title"/>
                         </div>
                         <div className="mb-3">
                             <label htmlFor="author" className="col-form-label">Author</label>
-                            <input type="text" className="form-control" onChange={(e) => setEditAuthor(e.target.value)} id="author"/>
+                            <input type="text" className="form-control" value={editAuthor} onChange={(e) => setEditAuthor(e.target.value)} id="author"/>
                         </div>
                         <div className="mb-3">
                             <label htmlFor="genre" className="col-form-label">Genre</label>
-                            <input type="text" className="form-control" onChange={(e) => setEditGenre(e.target.value)} id="genre"></input>
+                            <input type="text" className="form-control" value={editGenre} onChange={(e) => setEditGenre(e.target.value)} id="genre"></input>
                         </div>
                         </form>
                     </div>
                     <div className="modal-footer">
-                        <button type="button" className="btn btn-primary"  data-bs-dismiss="modal" onClick={(e) => updateBook(e)}>Update</button>
+                        <button type="button" className="btn btn-primary"  data-bs-dismiss="modal" onClick={() => updateBook(book.id)}>Update</button>
                     </div>
                     </div>
                 </div>
