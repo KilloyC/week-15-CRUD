@@ -3,14 +3,16 @@ import EditOutlinedIcon from '@mui/icons-material/EditOutlined';
 import Grid from '@mui/material/Grid';
 
 
-function EditBooks({ getBooks, endpoint, book }) {
+function EditBooks({ getBooks, endpoint, book, books }) {
     const [editTitle, setEditTitle] = useState('');
     const [editAuthor, setEditAuthor] = useState('');
     const [editGenre, setEditGenre] = useState('');
     
-    const updateBook = (id) => {
+    const updateBook = (e, id) => {
+        e.preventDefault();
         //console.log(endpoint);
         console.log(id);
+        console.log(editTitle, editAuthor, editGenre);
         fetch(`${endpoint}/${id}`, {
             method: 'PUT',
             headers: {
@@ -22,12 +24,12 @@ function EditBooks({ getBooks, endpoint, book }) {
                 genre: editGenre
             })
         }).then(() => getBooks())
-        //console.log(getBooks());
 
         setEditTitle('');
         setEditAuthor('');
         setEditGenre('');
     }
+
 
 
     return (
@@ -44,7 +46,8 @@ function EditBooks({ getBooks, endpoint, book }) {
                         <h1 className="modal-title fs-5" id="exampleModalLabel">Edit book</h1>
                         <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
-                    <div className="modal-body">
+                    {books.map((book, index) => 
+                    <div key={index} className="modal-body">
                         <form>
                         <div className="mb-3">
                             <label htmlFor="title" className="col-form-label">Title</label>
@@ -59,10 +62,8 @@ function EditBooks({ getBooks, endpoint, book }) {
                             <input type="text" className="form-control" value={editGenre} onChange={(e) => setEditGenre(e.target.value)} id="genre"></input>
                         </div>
                         </form>
-                    </div>
-                    <div className="modal-footer">
-                        <button type="button" className="btn btn-primary"  data-bs-dismiss="modal" onClick={() => updateBook(book.id)}>Update</button>
-                    </div>
+                            <button type="button" className="btn btn-primary"  data-bs-dismiss="modal" onClick={(e) => updateBook(e, book.id)}>Update book in slot {index}</button>
+                    </div>)}
                     </div>
                 </div>
             </div>

@@ -8,7 +8,7 @@ import Grid from '@mui/material/Grid';
 import DeleteForeverOutlinedIcon from '@mui/icons-material/DeleteForeverOutlined';
 
 const BookList = () => {
-    const [books, setBooks] = useState([]);
+    const [books, setBooks] = useState([{}]);
 
     const endpoint = 'https://64051b18eed195a99f7c3b5c.mockapi.io/books';
     useEffect(() => {
@@ -35,7 +35,7 @@ const BookList = () => {
             })
         })
     }
-
+ 
     return (
         <div>
             <Navbar />
@@ -62,7 +62,7 @@ const BookList = () => {
                                     <td className='text-center'>{book.genre}</td>
                                     <td>
                                         <div className='addBook'>
-                                            <EditBooks getBooks={getBooks} endpoint={endpoint} book={book}/>
+                                            <EditBooks getBooks={getBooks} endpoint={endpoint} book={book} books={books} />
                                             <Grid className='text-center' style={{cursor: 'pointer'}} item xs={8} onClick={() => deleteBook(book.id)}>
                                                 <DeleteForeverOutlinedIcon />
                                             </Grid>

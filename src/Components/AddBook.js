@@ -51,7 +51,7 @@ function AddBook({ getBooks, endpoint }) {
                 <div className="mb-3">
                     <label htmlFor="title" className="col-form-label">Title</label>
                     <input type="text" className="form-control" onChange={(event) => {
-                        console.log(event);
+                        //console.log(event);
                         setNewBookTitle(event.target.value)}} id="title"/>
                 </div>
                 <div className="mb-3">
