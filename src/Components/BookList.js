@@ -8,23 +8,23 @@ import Grid from '@mui/material/Grid';
 import DeleteForeverOutlinedIcon from '@mui/icons-material/DeleteForeverOutlined';
 
 const BookList = () => {
-    const [books, setBooks] = useState([{}]);
+    const [books, setBooks] = useState([]);
 
     const endpoint = 'https://64051b18eed195a99f7c3b5c.mockapi.io/books';
-    useEffect(() => {
+    useEffect(() => { //initially renders the fetch call.
         getBooks()
-    }, []);
+    }, []);//empty dependency array tell useEffect to render the fetch call once.
 
     const getBooks = () => {
         fetch(endpoint)
-            .then((data) => data.json())
+            .then((data) => data.json()) //then is a promise that will return the api data if called correctly.
             .then((data) => {
                 setBooks(data)
                 //console.log(data);
             })
     }
 
-    const deleteBook = (id) => {
+    const deleteBook = (id) => { //api delete method to delete elements in an api. takes in the endpoint and the id of each element.
         fetch(`${endpoint}/${id}`, {
             method: 'DELETE',
         }).then(res => {
@@ -35,7 +35,8 @@ const BookList = () => {
             })
         })
     }
- 
+    
+    //passing props to AddBook and EditBook. mapping through the array of objects that is books to return the object values. exporting Navbar as well.
     return (
         <div>
             <Navbar />
@@ -61,7 +62,7 @@ const BookList = () => {
                                     <td className='text-center'>{book.author}</td>
                                     <td className='text-center'>{book.genre}</td>
                                     <td>
-                                        <div className='addBook'>
+                                        <div className='editDeletButtons'>
                                             <EditBooks getBooks={getBooks} endpoint={endpoint} book={book} books={books} />
                                             <Grid className='text-center' style={{cursor: 'pointer'}} item xs={8} onClick={() => deleteBook(book.id)}>
                                                 <DeleteForeverOutlinedIcon />

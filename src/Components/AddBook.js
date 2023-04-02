@@ -6,7 +6,7 @@ function AddBook({ getBooks, endpoint }) {
     //     author: '',
     //     genre: ''
     // })
-    const [newBookTitle, setNewBookTitle] = useState('');
+    const [newBookTitle, setNewBookTitle] = useState(''); //creating state for the book title, author, and genre.
     const [newBookAuthor, setNewBookAuthor] = useState('');
     const [newBookGenre, setNewBookGenre] = useState('');
 
@@ -15,7 +15,7 @@ function AddBook({ getBooks, endpoint }) {
         //console.log(endpoint);
         console.log(newBookTitle, newBookAuthor, newBookGenre);
         fetch(endpoint, {
-            method: 'POST',
+            method: 'POST', //post request to create new books and update them to the api.
             headers: {
                 'Content-Type': 'application/json'
             },

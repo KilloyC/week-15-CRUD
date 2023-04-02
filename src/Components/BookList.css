@@ -15,6 +15,10 @@ th {
     color: azure;
 }
 
+table {
+    table-layout: fixed;
+}
+
 .table-td {
     background-color: rgb(64, 127, 127);
 }
