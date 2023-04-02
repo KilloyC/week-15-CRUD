@@ -8,7 +8,7 @@ function EditBooks({ getBooks, endpoint, book }) { //this is where the props are
     const [editAuthor, setEditAuthor] = useState('');
     const [editGenre, setEditGenre] = useState('');
     const [bookId, setBookId] = useState('');
-    const modalId = `myEditModal${book.id}`; //uses the id of the modal and the book id to allow individual books to be selected.
+    const modalId = `myEditModal${book.id}`; //setting a variable to a specific book id to allow individual books to be selected.
     
     const updateBook = (id) => {
         //console.log(endpoint);
@@ -44,9 +44,9 @@ function EditBooks({ getBooks, endpoint, book }) { //this is where the props are
         //console.log(book.id);
       }
 
-/**setting the onChange event to the text in the input fields. setting the event to onClick and the books id to the updateBook put request to update each book.
- * data-bs-target uses the id modalId to set the id for each book so that when you hit the edit button it knows what book you selected.
- */
+    /**setting the onChange event to the text in the input fields. setting the event to onClick and the books id to the updateBook put request to update each book.
+     * data-bs-target uses the variable modalId to set the id for each book so that when you hit the edit button it knows what book you selected.
+     */
 
     return (
         <>
