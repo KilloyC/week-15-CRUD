@@ -25,12 +25,13 @@ function AddBook({ getBooks, endpoint }) {
                 genre: newBookGenre
             })
 
-        }).then(() => getBooks())
-        // .then(getBooks)
+        }).then(() => {
+            setNewBookTitle('');
+            setNewBookAuthor('');
+            setNewBookGenre('');
+            getBooks()
+        })
                
-        setNewBookTitle('');
-        setNewBookAuthor('');
-        setNewBookGenre('');
     }
 
     return(
